@@ -1,0 +1,34 @@
+--打印输出语句print 
+
+  print（'hello,world'）# 输出hello，world
+
+  print(2**100) # 输出2的100次方
+
+--文件以.py结尾，如 2.py ，dos中运行 python 2.py ，也可以在编辑器中运行。
+
+--python内部实现 源代码-->字节码，字节码即编译过的代码，以.pyc结尾，运行速度比源代码运行快。字节码作为一种启动速度的优化，如果下一次运行时，没有改动过
+
+源代码，python将会加载字节码并跳过编译这个步骤。如果修改了源代码，python会自动检查源文件和字节码文件的时间戳，下次运行时，python会自动创建修改过的源文
+
+件的字节码。字节码文件也可以运行，即使没有源文件
+
+--字节码---->执行 字节码发送到python虚拟机（python Virtual Machine）即PVM上执行，PVM是python的运行引擎，它是实际运行脚本的组件，是python解释器的
+
+最后一步。这些都被隐藏在python里，只需编写源文件即可
+
+     源代码（m.py）----------->>字节码（m.pyc）-------->>运行时（PVM里）执行
+
+--python字节码是特定python的一种表现形式，所以无法像c\c++运行的一样快，PVN循环仍需解释字节码，实际效果就是纯python代码运行速度介于传统编译语言和传统
+
+的解释语言之间。
+
+--python主要实现方式：cpython ， jpython ， ironpython
+
+--cpython最普遍的python版本，jpython是为了与java编程语言集成，包含了Java类，这些类编译python源代码，形成Java字节码，并映射到Java虚拟机（JVM）上，
+
+jpython的目标让python代码能够脚本化Java代码，实现与Java的无缝结合，因为python被编译成Java字节码，Jpythpon具有集成功能，允许导入python代码或使用
+
+Java类，因为Jpython比cpython慢且不够健壮，所以往往看作是主要面向Java代码前端脚本语言的Java开发者的一个工具，Ironpython允许python程序即可以用作
+
+客户端也可用作服务器的组件，还可以与其他.NET进行通信。
+
