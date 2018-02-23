@@ -1,0 +1,2 @@
+# learnself
+learn python
