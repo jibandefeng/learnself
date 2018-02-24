@@ -16,9 +16,9 @@ Python 2.7.9 (default, Dec 10 2014, 12:24:55) [MSC v.1500 32 bit (Intel)] on win
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 
---在windows中也可以通过启动IDLE主窗口过着从python的Start菜单选项中选择‘python（command line）’来开始类似的会话。它们都会产生一个具有同样功能的
+--在windows中也可以通过启动IDLE主窗口或者从python的Start菜单选项中选择‘python（command line）’来开始类似的会话。它们都会产生一个具有同样功能的
 
-python交互式命令提示符。而不必输入一条shellmingling
+python交互式命令提示符。而不必输入一条shell命令。
 
 --在交互模式下工作，输入代码的结果在按下回车键后在>>>这一行后显示。
 
@@ -96,65 +96,39 @@ a
 a
 a
 
+--第一个文件示例：命名为script1.py
 
+#first python
 
+import sys   (导入sys内置模块)
 
+print(sys.platform)   #(打印出工作的计算机的类型) 
 
+print(2**100)         #（打印2的100次方）
 
+x='Spam!'              #（x引用一个字符串的值）
 
+print(x*8)             #（重复）
 
+cmd进入到当前工作环境中输入python script1.py
 
+C:\Users\Administrator\Desktop>python script1.py
+win32
+1267650600228229401496703205376
+Spam!Spam!Spam!Spam!Spam!Spam!Spam!Spam!
 
+#后面为python的注释，python运行时不会执行，增加的程序的可读性
 
+--流的重定向：我们可以用特定的shell语句，把python脚本的输出保存到一个文件中保存起来
 
+C:\Users\Administrator\Desktop>python script1.py > save.txt
 
+前面输出的内容将会保存到save.txt的文件中，这种输入输出叫做流的重定向，在windows和linux中都适用，
 
+--如果你所在的目录和工作的目录不同，就要给出完整的路径 如 python C:\Users\Administrator\Desktop\script1.py
 
+--如果python在你的系统路径中，则可以省略掉python本身 C:\Users\Administrator\Desktop>script1.py
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
- 
-
-
-
-
-
-
-
-
+--如果你的PATH没有包含python的目录，python和脚本都没在你所工作的目录中，那么两个都要使用完整的路径
 
 
