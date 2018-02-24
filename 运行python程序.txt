@@ -1,3 +1,6 @@
+
+                                          运行python程序
+
 --打印输出语句print 
 
   print（'hello,world'）# 输出hello，world
@@ -31,4 +34,31 @@ jpython的目标让python代码能够脚本化Java代码，实现与Java的无�
 Java类，因为Jpython比cpython慢且不够健壮，所以往往看作是主要面向Java代码前端脚本语言的Java开发者的一个工具，Ironpython允许python程序即可以用作
 
 客户端也可用作服务器的组件，还可以与其他.NET进行通信。
+
+总结：
+
+  --python解释器：运行python程序的程序
+
+  --源代码：是为程序所写的语句包括了文本文件（通常以.py）结尾
+
+  --字节码：python将程序编译后得到的底层形式，python自动将字节码保存到后缀名为.pyc的文件中。
+
+  --PVM：python虚拟机，它是python的运行时引擎解释编译得到的代码
+  
+  --cpython是python的标准实现，Jpython和Ironpython分别是python程序的Java和.NET的实现。它们都是python编译器的替代实现。
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
