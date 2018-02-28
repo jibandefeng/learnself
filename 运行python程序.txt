@@ -45,20 +45,7 @@ Java类，因为Jpython比cpython慢且不够健壮，所以往往看作是主�
 
   --PVM：python虚拟机，它是python的运行时引擎解释编译得到的代码
   
-  --cpython是python的标准实现，Jpython和Ironpython分别是python程序的Java和.NET的实现。它们都是python编译器的替代实现。
-  
-  
-
-
-
-
-
-
-
-
-
-
-
+  --cpython是python的标准实现，Jpython和Ironpython分别是python程序的Java和.NET的实现。它们都是python编译器的替代实现。   
 
 
 
