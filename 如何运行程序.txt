@@ -132,3 +132,4 @@ C:\Users\Administrator\Desktop>python script1.py > save.txt
 --如果你的PATH没有包含python的目录，python和脚本都没在你所工作的目录中，那么两个都要使用完整的路径
 
 
+
