@@ -412,18 +412,174 @@ IndexError: list assignment index out of range
 >>> {x:ord(x) for x in 'spam'}
 {'s': 115, 'p': 112, 'a': 97, 'm': 109}
 
+字典
+
+--pyton中的字典不是序列，而是一种映射。映射而是其他对象的一种集合，他们通过键而不是相对位置来存储。他们简单的将键映射到值。也具有可变性。
+
+映射操作
+
+作为常量编写时字典编写在大括号中，并包含一系列的键‘值：对’在我们需要将键一系列的值相关联的时候，字典是很有用的。
+
+>>> d={'food':'Spam','quality':4,'color':'pink'}
+
+我们可以通过键对这个字典进行索引，读取或者改变键所关联的值。字典的索引能使用的是和序列相同的语法。但是在方括号中的元素是键，而不是相对位置。
+
+>>> d['food']
+'Spam'
+>>> d['quality']+=1
+>>> d
+{'food': 'Spam', 'quality': 5, 'color': 'pink'}
+
+创建字典的方法有：
+
+创建一个新的字典，然后以一个键来填写他。与列表中禁止边界外的赋值不同，对一个新的字典的键赋值会创建键。
+
+>>> d={}
+>>> d['name']='bob'
+>>> d['job']='dev'
+>>> d['age']=40
+>>> d
+{'name': 'bob', 'job': 'dev', 'age': 40}
+>>> print(d['name'])
+bob
+
+python中，通过键来索引一个字典往往是python中编写搜索的最快方法。
+
+--python字典也可以重访嵌套。
+
+>>> rec={'name':{'first':'bob','last':'sith'},}
+>>> rec={'name':{'first':'bob','last':'sith'},
+...      'job':['dev','mgr'],
+...      'age':40.5}
+
+>>> rec['name']
+{'first': 'bob', 'last': 'sith'}
+>>> rec['name']['last']
+'sith'
+
+>>> rec['job']
+['dev', 'mgr']
+>>> rec['job'][-1]
+'mgr'
+>>> rec['job'].append('janitor')
+>>> rec
+{'name': {'first': 'bob', 'last': 'sith'}, 'job': ['dev', 'mgr', 'janitor'], 'ag
+e': 40.5}
+
+最后一个操作是如何扩展嵌入job列表的，job列表是字典所包含的一部分独立的内存，他可以自由的减少或者增加。
+
+--当我们不再需要该对象时，必须小心的去释放所有的对象空间。python中当最后一次引用对象后，这个对象所占用的内存空间将会自动清理掉。
+
+--python具有一种垃圾回收机制，在程序运行时可以清理不再使用的内存。并将你从必须管理代码中这样细节中间中解放出来。一旦一个对象的最后一次引用被移除。
+
+空间将会立即回收。
+
+键的排序：for 循环
+
+--因为字典不是序列，他们不会包含任何可靠的从做到右的顺序。这表示我们打印一个创建的字典，他的键也许会以与我们输入时不同的顺序出现。如果在字典里需要强调
+
+某种顺序的时候，可以通过字典的keys方法收集一个键的列表，使用列表的sort方法进行排序，然后使用for循环逐个进行显示结果。
 
 
+>>> d
+{'a': 1, 'c': 3, 'b': 2}
+>>> ks=list(d.keys())
+>>> ks
+['a', 'c', 'b']
+>>> ks.sort()
+>>> ks
+['a', 'b', 'c']
+
+>>> for k in ks:
+...     print(k,'=>',d[k])
+...
+a => 1
+b => 2
+c => 3
+
+也可以通过使用最新的sorted内置函数可以一步完成，sorted调用返回结果并对各种对象类型进行排序。在这个例子中，自动对字典的键排序。
+
+for是遍历一个序列中的元素并按照顺序对每一个元素
 
 
+>>> d
+{'a': 1, 'c': 3, 'b': 2}
+>>> for k in sorted(d):
+...     print(k,'=>',d[k])
+...
+a => 1
+b => 2
+c => 3
 
+for可以使用在任意的序列对象。并且像列表解析一样，甚至可以用在一些不是序列的对象中。
 
+>>> for c in  'spam':
+...     print(c.upper())
+...
+S
+P
+A
+M
 
+--while循环是一种更为常见的排序工具，他不仅限于遍历序列。
 
+>>> x=4
+>>> while x>0:
+...     print('spam'*x)
+...     x-=1
+...
+spamspamspamspam
+spamspamspam
+spamspam
+spam
 
+迭代和优化
 
+>>> squares=[x**2 for x in [1,2,3,4,5]]
+>>> squares
+[1, 4, 9, 16, 25]
 
+他能够编写一个等效的for循环。
 
+>>> squares=[]
+>>> for i in [1,2,3,4,5]:
+...     squares.append(i**2)
+...
+>>> squares
+[1, 4, 9, 16, 25]
+
+尽管这样，列表解析和相关的函数编程工具如map和filter，运行都比for快。
+
+当获取一个不存在的键是会引发错误
+
+>>> d
+{'a': 1, 'c': 3, 'b': 2, 'e': 99}
+>>> d['f']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'f'
+
+获取一个不存在的东西往往是一个程序的错误。但是，在一些程序中，编写程序时并不是总知道存在哪些键。在这情况下，就要进行测试，in关系表达式允许我们查询字典
+
+>>> 'f' in d
+False
+>>> if not 'f' in d:
+...     print('missing')
+...
+missing
+
+还有其他的方法来创建字典并避免获取不存在的字典键。get方法，has_key方法，try语句，if/else表达式
+
+>>> value=d.get('x',0)
+>>> value
+0
+>>> value=d['x'] if 'x' in d else 0
+>>> value
+0
+
+元组
+
+元组对象就像是一个不可改变的列表，元组是序列，但是他具有不可变性。他们编写在圆括号中，支持任意类型任意嵌以及常见的字符串操作。
 
 
 
