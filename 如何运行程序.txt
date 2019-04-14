@@ -110,12 +110,19 @@ x='Spam!'              #（x引用一个字符串的值）
 
 print(x*8)             #（重复）
 
-cmd进入到当前工作环境中输入python script1.py
+cmd进入到当前工作环境中输入 python script1.py
+
+得到如下结果：
 
 C:\Users\Administrator\Desktop>python script1.py
+
 win32
+
 1267650600228229401496703205376
+
 Spam!Spam!Spam!Spam!Spam!Spam!Spam!Spam!
+
+以上就是python文件执行后的结果！
 
 #后面为python的注释，python运行时不会执行，增加的程序的可读性
 
