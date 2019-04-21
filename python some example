@@ -58,8 +58,45 @@ print('bye')                       # 最后打印bye
 
 bad，是的话 ==>> 嵌套if判断输入的是不是小于20，不是的话打印low，是的话求出二次方 ==>> 最后打印bye
 
+========================================================================================================================================
 
+模拟一个登录系统
+print('--------------欢迎登录-------------')  
+login_list = {123:'123',           # 所拥有的用户
+               456:'456',
+               789:'789',
+               }
+lock_dict = {}                     # 定义一个锁定名单
+check_number = 1                   # 锁定计数器
+while True:
+    login_username = input('please input username:')
+    login_password = input('please input password:')          # 输入帐号和密码
+    if login_username.isdigit():                              # 判断输入的是不是数字符合要求
+        login_username = int(login_username)                  # 转为int类型
+        if login_username in login_list:                      # 判断是不是用户
+            if (login_username,login_password) in list(login_list.items()):     # 帐号密码正确，则正常
+                print('welcome to login.......')
 
+            else:
+                print('username error please reinput')        # 帐号不正确
+                if login_username  in list(lock_dict.keys()): # 判断帐号在不在被锁定名单
+                    lock_dict[login_username] += 1            # 锁定次数加一
+                    print(lock_dict)                          # 打印锁定列表    
+                    if lock_dict[login_username] == 3:        #判断是不是输入错误三次
+                        print('locked')                       # 锁定，退出
+                        exit()
+                    else:
+                        print(lock_dict)
+                else:
+                    lock_dict[login_username] = check_number # 帐号第一次输错，则加入锁定名单
+                    print(lock_dict)
+        else:
+             print("not exist")                              # 帐号不存在
+
+    else:
+        print('not exist')                                   # 帐号不存在
+        
+  这次模拟一个简单的登录系统，用户输入帐号密码，无效帐号不存在。正确帐号输入三次错误密码后锁定！
 
 
 
